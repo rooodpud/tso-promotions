@@ -1,0 +1,197 @@
+/*
+ * TS Promotion widget: an offer as a band or a card. Colours and fonts use the kit tokens from
+ * ts-base.css (.ts-w); every value here is a default that the widget's Style controls replace.
+ * The layout follows the widget's own width (container query), not the screen, so a card in a
+ * narrow column stacks even on a desktop.
+ */
+
+.tsp-spot {
+	container-type: inline-size;
+	display: flex;
+	flex-direction: column;
+	row-gap: 24px;
+}
+
+.tsp-item {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	grid-template-areas: "intro" "tiles" "foot" "terms";
+	gap: 20px;
+	padding: 28px 24px;
+	border: 1px solid var(--ts-line);
+	border-radius: 22px;
+	background: var(--ts-cream);
+}
+
+.tsp-item__intro {
+	grid-area: intro;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 10px;
+	min-width: 0;
+}
+
+.tsp-item__badge {
+	padding: 3px 12px;
+	border-radius: 100px;
+	background: var(--ts-terra);
+	color: #fff;
+	font-size: 12.5px;
+	font-weight: 700;
+	letter-spacing: .06em;
+	line-height: 1.6;
+	text-transform: uppercase;
+}
+
+/* Global-font presets (ISSUE-011): sizes come from --ts-fs / --ts-lh unless the widget's Typography sets one. */
+:where(.tsp-item__title, .tsp-item__text, .tsp-item__details, .tsp-tile__value) {
+	--e-global-typography-ts_heading-font-size: var(--ts-fs);
+	--e-global-typography-ts_heading-line-height: var(--ts-lh);
+	--e-global-typography-ts_body-font-size: var(--ts-fs);
+	--e-global-typography-ts_body-line-height: var(--ts-lh);
+}
+
+.ts-w .tsp-item__title {
+	--ts-fs: 30px;
+	--ts-lh: 1.15;
+	font-size: var(--ts-fs);
+	line-height: var(--ts-lh);
+}
+
+.tsp-item__text,
+.tsp-item__details {
+	--ts-fs: 17px;
+	--ts-lh: 1.62;
+	color: var(--ts-muted);
+	font-size: var(--ts-fs);
+	line-height: var(--ts-lh);
+}
+
+.tsp-item__details > :first-child {
+	margin-top: 0;
+}
+
+.tsp-item__details > :last-child {
+	margin-bottom: 0;
+}
+
+.ts-w .tsp-tiles {
+	grid-area: tiles;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 12px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ts-w .tsp-tile {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 4px;
+	margin: 0;
+	padding: 18px 20px;
+	border: 1px solid var(--ts-line);
+	border-radius: 16px;
+	background: var(--ts-sand);
+}
+
+.tsp-tile__label {
+	color: var(--ts-muted);
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: .05em;
+	line-height: 1.4;
+	text-transform: uppercase;
+}
+
+.tsp-tile__value {
+	--ts-fs: 24px;
+	--ts-lh: 1.2;
+	color: var(--ts-terra-d);
+	font-family: var(--ts-font-head);
+	font-size: var(--ts-fs);
+	font-weight: 700;
+	letter-spacing: -.01em;
+	line-height: var(--ts-lh);
+}
+
+.tsp-item__foot {
+	grid-area: foot;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px 24px;
+}
+
+.tsp-item__dates {
+	color: var(--ts-esp);
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 1.5;
+}
+
+.tsp-item__dates__sep {
+	color: var(--ts-muted-2);
+}
+
+.tsp-item__terms {
+	grid-area: terms;
+	color: var(--ts-muted-2);
+	font-size: 13.5px;
+	line-height: 1.5;
+}
+
+/* Narrow (phones, narrow columns): the button fills the width, dates on their own lines. */
+@container (max-width: 520px) {
+	.tsp-item__dates > .tsp-item__dates__sep {
+		display: none;
+	}
+
+	.tsp-item__dates > span {
+		display: block;
+	}
+
+	.tsp-item__foot .ts-btn {
+		width: 100%;
+	}
+
+	.ts-w .tsp-item__title {
+		--ts-fs: 26px;
+	}
+}
+
+/* Band, wide enough: text on the left, tiers on the right, dates and button along the bottom. */
+@container (min-width: 760px) {
+	.tsp-spot--band .tsp-item {
+		grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+		grid-template-areas: "intro tiles" "foot foot" "terms terms";
+		align-items: center;
+		column-gap: 40px;
+		padding: 36px 40px;
+	}
+
+	.tsp-spot--band .tsp-item__foot {
+		padding-top: 20px;
+		border-top: 1px solid var(--ts-line);
+	}
+}
+
+/* Card: everything stacked, tiers one per row unless chosen otherwise. */
+.tsp-spot--card .tsp-tiles {
+	grid-template-columns: minmax(0, 1fr);
+}
+
+/* 1.1.0: message shown when no offer is showing (Offers page). */
+.tsp-item--empty {
+	display: block;
+	text-align: center;
+}
+
+/* 1.2.0: band on a trip page, under the trip header (inside the trip page width). */
+.tsp-trip-band {
+	padding: 28px 0 8px;
+}

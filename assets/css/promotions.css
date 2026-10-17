@@ -1,0 +1,775 @@
+/*
+ * TS Promotions: top bar and pop-up (added outside Elementor, so this sheet carries its own
+ * palette: the Travel Store Global Colours with the draft values as fall-backs, as in ts-base.css).
+ * Each offer colour sets five variables; text on every colour meets 4.5:1 contrast.
+ */
+
+.tsp-topbar,
+.tsp-popup,
+.tsp-slidein,
+.tsp-bar,
+.tsp-ribbon,
+.tsp-ask {
+	--tsp-sand: var(--e-global-color-ts_sand, #FBF6EE);
+	--tsp-cream: var(--e-global-color-ts_cream, #FFFCF6);
+	--tsp-esp: var(--e-global-color-ts_espresso, #382520);
+	--tsp-gold: var(--e-global-color-ts_gold, #FFC300);
+	--tsp-font-body: var(--e-global-typography-ts_body-font-family, 'Karla'), sans-serif;
+	--tsp-font-head: var(--e-global-typography-ts_heading-font-family, 'Bricolage Grotesque'), sans-serif;
+
+	/* Espresso (default). */
+	--tsp-bg: var(--tsp-esp);
+	--tsp-fg: var(--tsp-cream);
+	--tsp-badge-bg: var(--tsp-gold);
+	--tsp-badge-fg: var(--tsp-esp);
+	--tsp-ink: var(--tsp-esp);
+	--tsp-btn-bg: var(--tsp-esp);
+	--tsp-btn-fg: #fff;
+
+	box-sizing: border-box;
+	font-family: var(--tsp-font-body);
+}
+
+.tsp-topbar *,
+.tsp-popup *,
+.tsp-slidein *,
+.tsp-bar *,
+.tsp-topbar *::before,
+.tsp-popup *::before {
+	box-sizing: border-box;
+}
+
+.tsp-c--terracotta {
+	--tsp-bg: var(--e-global-color-ts_terracotta, #F3692A);
+	--tsp-fg: var(--tsp-esp);
+	--tsp-badge-bg: var(--tsp-esp);
+	--tsp-badge-fg: var(--tsp-cream);
+	--tsp-ink: var(--e-global-color-ts_terracotta_dark, #D6521A);
+	--tsp-btn-bg: var(--e-global-color-ts_terracotta, #F3692A);
+}
+
+.tsp-c--turquoise {
+	--tsp-bg: var(--e-global-color-ts_turquoise_deep, #0D76AB);
+	--tsp-fg: #fff;
+	--tsp-ink: var(--e-global-color-ts_turquoise_deep, #0D76AB);
+	--tsp-btn-bg: var(--e-global-color-ts_turquoise_deep, #0D76AB);
+}
+
+.tsp-c--oasis {
+	--tsp-bg: var(--e-global-color-ts_oasis_deep, #2C8828);
+	--tsp-fg: #fff;
+	--tsp-ink: var(--e-global-color-ts_oasis_deep, #2C8828);
+	--tsp-btn-bg: var(--e-global-color-ts_oasis_deep, #2C8828);
+}
+
+.tsp-c--gold {
+	--tsp-bg: var(--tsp-gold);
+	--tsp-fg: var(--tsp-esp);
+	--tsp-badge-bg: var(--tsp-esp);
+	--tsp-badge-fg: var(--tsp-cream);
+	--tsp-btn-bg: var(--tsp-gold);
+	--tsp-btn-fg: var(--tsp-esp);
+}
+
+/* ---------- Top bar ---------- */
+.tsp-topbar {
+	position: relative;
+	z-index: 100;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 44px;
+	padding: 8px 52px;
+	background: var(--tsp-bg);
+	color: var(--tsp-fg);
+	font-size: 15px;
+	line-height: 1.45;
+}
+
+.tsp-topbar .tsp-topbar__in {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 4px 12px;
+	max-width: 1116px;
+	margin: 0;
+	padding: 0;
+	color: inherit;
+	text-align: center;
+}
+
+.tsp-topbar__badge {
+	flex: none;
+	padding: 2px 10px;
+	border-radius: 100px;
+	background: var(--tsp-badge-bg);
+	color: var(--tsp-badge-fg);
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: .06em;
+	line-height: 1.6;
+	text-transform: uppercase;
+}
+
+.tsp-topbar__text {
+	font-weight: 600;
+}
+
+body .tsp-topbar a.tsp-topbar__link,
+body .tsp-topbar a.tsp-topbar__link:visited {
+	color: inherit;
+	font-weight: 700;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	white-space: nowrap;
+}
+
+body .tsp-topbar a.tsp-topbar__link:hover,
+body .tsp-topbar a.tsp-topbar__link:focus {
+	color: inherit;
+	text-decoration-thickness: 2px;
+}
+
+.tsp-topbar :focus-visible {
+	outline: 3px solid currentColor;
+	outline-offset: 2px;
+}
+
+body .tsp-topbar .tsp-topbar__close {
+	position: absolute;
+	top: 50%;
+	right: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	margin: -20px 0 0;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: transparent;
+	color: inherit;
+	font-size: 24px;
+	line-height: 1;
+	cursor: pointer;
+}
+
+body .tsp-topbar .tsp-topbar__close:hover {
+	background: rgba(255, 255, 255, .14);
+	color: inherit;
+}
+
+@media (max-width: 600px) {
+	.tsp-topbar {
+		justify-content: flex-start;
+		padding: 8px 48px 8px 16px;
+		font-size: 14px;
+	}
+
+	.tsp-topbar .tsp-topbar__in {
+		justify-content: flex-start;
+		text-align: left;
+	}
+
+	body .tsp-topbar .tsp-topbar__close {
+		right: 4px;
+	}
+}
+
+/* ---------- Pop-up ---------- */
+.tsp-popup[hidden] {
+	display: none !important;
+}
+
+.tsp-popup {
+	position: fixed;
+	inset: 0;
+	z-index: 100000; /* above the contact button (99990) */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 24px;
+	color: var(--tsp-esp);
+	font-size: 16px;
+	line-height: 1.55;
+}
+
+.tsp-popup__backdrop {
+	position: absolute;
+	inset: 0;
+	background: rgba(56, 37, 32, .55);
+}
+
+.tsp-popup__box {
+	position: relative;
+	width: 100%;
+	max-width: 520px;
+	max-height: calc(100vh - 48px);
+	max-height: calc(100dvh - 48px);
+	overflow: auto;
+	border-radius: 20px;
+	background: var(--tsp-cream);
+	box-shadow: 0 24px 60px rgba(56, 37, 32, .3);
+	animation: tsp-pop .22s ease-out;
+}
+
+/* The window itself takes focus when it opens; no ring around the whole window. */
+.tsp-popup .tsp-popup__box:focus,
+.tsp-popup .tsp-popup__box:focus-visible {
+	outline: none;
+}
+
+body .tsp-popup .tsp-popup__close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: rgba(255, 252, 246, .92);
+	color: var(--tsp-esp);
+	font-size: 26px;
+	line-height: 1;
+	cursor: pointer;
+}
+
+body .tsp-popup .tsp-popup__close:hover {
+	background: var(--tsp-sand);
+	color: var(--tsp-esp);
+}
+
+.tsp-popup :focus-visible {
+	outline: 3px solid var(--e-global-color-ts_turquoise, #0392CC);
+	outline-offset: 2px;
+}
+
+.tsp-popup .tsp-popup__img {
+	display: block;
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	border-radius: 20px 20px 0 0;
+}
+
+.tsp-popup__body {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 12px;
+	padding: 28px 28px 24px;
+}
+
+.tsp-popup .tsp-badge {
+	padding: 3px 12px;
+	border-radius: 100px;
+	background: var(--tsp-bg);
+	color: var(--tsp-fg);
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: .06em;
+	line-height: 1.6;
+	text-transform: uppercase;
+}
+
+.tsp-popup .tsp-popup__title {
+	margin: 0;
+	padding-right: 32px;
+	color: var(--tsp-esp);
+	font-family: var(--tsp-font-head);
+	font-size: 28px;
+	font-weight: 700;
+	letter-spacing: -.015em;
+	line-height: 1.15;
+}
+
+.tsp-popup .tsp-popup__text,
+.tsp-popup .tsp-details {
+	margin: 0;
+	color: rgba(56, 37, 32, .8);
+}
+
+.tsp-popup .tsp-details > :first-child {
+	margin-top: 0;
+}
+
+.tsp-popup .tsp-details > :last-child {
+	margin-bottom: 0;
+}
+
+.tsp-popup .tsp-tiers {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: 10px;
+	width: 100%;
+	margin: 4px 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tsp-popup .tsp-tier {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	margin: 0;
+	padding: 14px 16px;
+	border: 1px solid rgba(56, 37, 32, .1);
+	border-radius: 14px;
+	background: var(--tsp-sand);
+}
+
+.tsp-popup .tsp-tier__label {
+	color: rgba(56, 37, 32, .68);
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: .04em;
+	text-transform: uppercase;
+}
+
+.tsp-popup .tsp-tier__value {
+	color: var(--tsp-ink);
+	font-family: var(--tsp-font-head);
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 1.25;
+}
+
+.tsp-popup .tsp-dates {
+	margin: 0;
+	color: rgba(56, 37, 32, .8);
+	font-size: 14.5px;
+	font-weight: 600;
+}
+
+body .tsp-popup a.tsp-popup__btn,
+body .tsp-popup a.tsp-popup__btn:hover,
+body .tsp-popup a.tsp-popup__btn:focus {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 4px;
+	padding: 14px 26px;
+	border-radius: 100px;
+	background: var(--tsp-btn-bg);
+	color: var(--tsp-btn-fg);
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 1.4;
+	text-decoration: none;
+}
+
+.tsp-popup .tsp-terms {
+	margin: 0;
+	color: rgba(56, 37, 32, .62);
+	font-size: 13px;
+	line-height: 1.5;
+}
+
+/* Phones: a sheet that slides up from the bottom, full width. */
+@media (max-width: 600px) {
+	.tsp-popup {
+		align-items: flex-end;
+		padding: 0;
+	}
+
+	.tsp-popup__box {
+		max-width: none;
+		max-height: 85vh;
+		max-height: 85dvh;
+		border-radius: 20px 20px 0 0;
+		animation-name: tsp-sheet;
+	}
+
+	.tsp-popup .tsp-popup__img {
+		height: 150px;
+	}
+
+	.tsp-popup__body {
+		padding: 22px 20px 24px;
+	}
+
+	.tsp-popup .tsp-popup__title {
+		font-size: 24px;
+	}
+
+	body .tsp-popup a.tsp-popup__btn {
+		align-self: stretch;
+	}
+}
+
+@keyframes tsp-pop {
+	from { opacity: 0; transform: translateY(12px) scale(.98); }
+	to { opacity: 1; transform: none; }
+}
+
+@keyframes tsp-sheet {
+	from { transform: translateY(100%); }
+	to { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.tsp-popup__box {
+		animation: none;
+	}
+}
+
+/* While the pop-up is open the page behind it does not scroll. */
+html.tsp-lock,
+html.tsp-lock body {
+	overflow: hidden;
+}
+
+/* ======================================================================
+ * 1.1.0: corner slide-in, bottom bar, ribbons on cards, offer line on forms
+ * ==================================================================== */
+
+/* ---------- Corner slide-in (bottom left; the contact button is bottom right) ---------- */
+.tsp-slidein[hidden] {
+	display: none !important;
+}
+
+.tsp-slidein {
+	position: fixed;
+	left: 20px;
+	bottom: calc(20px + var(--tsp-bar-h, 0px));
+	z-index: 99995;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 8px;
+	width: 340px;
+	max-width: calc(100vw - 40px);
+	max-height: calc(100vh - 40px);
+	overflow: auto;
+	padding: 20px 20px 18px;
+	border-top: 4px solid var(--tsp-bg);
+	border-radius: 18px;
+	background: var(--tsp-cream);
+	box-shadow: 0 18px 44px rgba(56, 37, 32, .26);
+	color: var(--tsp-esp);
+	font-size: 15px;
+	line-height: 1.5;
+	animation: tsp-slide .3s ease-out;
+}
+
+.tsp-slidein .tsp-badge,
+.tsp-popup .tsp-badge {
+	padding: 3px 12px;
+	border-radius: 100px;
+	background: var(--tsp-bg);
+	color: var(--tsp-fg);
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: .06em;
+	line-height: 1.6;
+	text-transform: uppercase;
+}
+
+.tsp-slidein .tsp-slidein__title {
+	margin: 0;
+	padding-right: 28px;
+	color: var(--tsp-esp);
+	font-family: var(--tsp-font-head);
+	font-size: 21px;
+	font-weight: 700;
+	letter-spacing: -.01em;
+	line-height: 1.2;
+}
+
+.tsp-slidein .tsp-slidein__text {
+	margin: 0;
+	color: rgba(56, 37, 32, .8);
+}
+
+.tsp-slidein .tsp-minis {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	width: 100%;
+	margin: 2px 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tsp-slidein .tsp-mini {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 0 10px;
+	margin: 0;
+	padding: 6px 0;
+	border-bottom: 1px solid rgba(56, 37, 32, .1);
+}
+
+.tsp-mini__label {
+	color: rgba(56, 37, 32, .68);
+	font-size: 12.5px;
+	font-weight: 700;
+	letter-spacing: .04em;
+	text-transform: uppercase;
+	line-height: 1.6;
+}
+
+.tsp-mini__value {
+	color: var(--tsp-ink);
+	font-weight: 700;
+}
+
+.tsp-slidein .tsp-dates {
+	margin: 0;
+	color: rgba(56, 37, 32, .8);
+	font-size: 13.5px;
+	font-weight: 600;
+}
+
+body .tsp-slidein a.tsp-slidein__btn,
+body .tsp-slidein a.tsp-slidein__btn:hover,
+body .tsp-slidein a.tsp-slidein__btn:focus {
+	align-self: stretch;
+	margin-top: 4px;
+	padding: 11px 20px;
+	border-radius: 100px;
+	background: var(--tsp-btn-bg);
+	color: var(--tsp-btn-fg);
+	font-size: 15px;
+	font-weight: 700;
+	line-height: 1.4;
+	text-align: center;
+	text-decoration: none;
+}
+
+body .tsp-slidein .tsp-slidein__close {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: transparent;
+	color: var(--tsp-esp);
+	font-size: 24px;
+	line-height: 1;
+	cursor: pointer;
+}
+
+body .tsp-slidein .tsp-slidein__close:hover {
+	background: var(--tsp-sand);
+	color: var(--tsp-esp);
+}
+
+.tsp-slidein :focus-visible,
+.tsp-bar :focus-visible,
+.tsp-ask :focus-visible {
+	outline: 3px solid var(--e-global-color-ts_turquoise, #0392CC);
+	outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+	.tsp-slidein {
+		left: 12px;
+		right: 12px;
+		bottom: calc(12px + var(--tsp-bar-h, 0px));
+		width: auto;
+		max-width: none;
+		max-height: 70vh;
+	}
+}
+
+@keyframes tsp-slide {
+	from { opacity: 0; transform: translateY(24px); }
+	to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.tsp-slidein {
+		animation: none;
+	}
+}
+
+/* ---------- Bottom bar ---------- */
+.tsp-bar {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 99985; /* under the contact button (99990), which is lifted above the bar */
+	display: flex;
+	align-items: center;
+	gap: 8px 12px;
+	padding: 10px 52px 10px 16px;
+	padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+	background: var(--tsp-bg);
+	box-shadow: 0 -6px 20px rgba(56, 37, 32, .18);
+	color: var(--tsp-fg);
+	font-size: 14.5px;
+	line-height: 1.35;
+}
+
+.tsp-bar .tsp-bar__text {
+	flex: 1;
+	min-width: 0;
+	margin: 0;
+	color: inherit;
+	font-weight: 600;
+}
+
+body .tsp-bar a.tsp-bar__btn,
+body .tsp-bar a.tsp-bar__btn:hover,
+body .tsp-bar a.tsp-bar__btn:focus {
+	flex: none;
+	padding: 9px 16px;
+	border-radius: 100px;
+	background: var(--tsp-fg);
+	color: var(--tsp-bg);
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 1.3;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+body .tsp-bar .tsp-bar__close {
+	position: absolute;
+	top: 50%;
+	right: 6px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	margin: -20px 0 0;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: transparent;
+	color: inherit;
+	font-size: 24px;
+	line-height: 1;
+	cursor: pointer;
+}
+
+body .tsp-bar .tsp-bar__close:hover {
+	background: rgba(255, 255, 255, .14);
+	color: inherit;
+}
+
+.tsp-bar--phones,
+.tsp-bar--tablets {
+	display: none;
+}
+
+@media (max-width: 767px) {
+	.tsp-bar--phones {
+		display: flex;
+	}
+}
+
+@media (max-width: 1024px) {
+	.tsp-bar--tablets {
+		display: flex;
+	}
+}
+
+@media (max-width: 420px) {
+	.tsp-bar .tsp-topbar__badge {
+		display: none;
+	}
+}
+
+/* While the bar shows: page content can scroll clear of it, and the contact button sits above it. */
+html.tsp-has-bar body {
+	padding-bottom: var(--tsp-bar-h, 0px);
+}
+
+html.tsp-has-bar .ts-flyout {
+	bottom: calc(20px + var(--tsp-bar-h, 0px));
+}
+
+@media (max-width: 480px) {
+	html.tsp-has-bar .ts-flyout {
+		bottom: calc(14px + var(--tsp-bar-h, 0px));
+	}
+}
+
+/* ---------- Ribbon on cards ---------- */
+.tsp-ribbon-host {
+	position: relative;
+}
+
+.tsp-ribbon {
+	position: absolute;
+	top: 14px;
+	z-index: 3;
+	padding: 3px 11px;
+	border-radius: 100px;
+	background: var(--tsp-bg);
+	box-shadow: 0 4px 12px rgba(56, 37, 32, .22);
+	color: var(--tsp-fg);
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: .06em;
+	line-height: 1.6;
+	text-transform: uppercase;
+	pointer-events: none;
+}
+
+.tsp-ribbon--top-left {
+	left: 14px;
+}
+
+.tsp-ribbon--top-right {
+	right: 14px;
+}
+
+/* ---------- "You are asking about" line on enquiry forms ---------- */
+.tsp-ask {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px 12px;
+	margin: 0 0 18px;
+	padding: 12px 14px;
+	border: 1px solid rgba(56, 37, 32, .12);
+	border-left: 4px solid var(--tsp-bg);
+	border-radius: 12px;
+	background: var(--tsp-sand);
+	color: var(--tsp-esp);
+	font-size: 15px;
+	line-height: 1.45;
+}
+
+.tsp-ask__text {
+	flex: 1;
+	min-width: 12em;
+}
+
+body .tsp-ask .tsp-ask__remove {
+	padding: 4px 0;
+	border: 0;
+	background: none;
+	color: var(--tsp-esp);
+	font: inherit;
+	font-size: 14px;
+	font-weight: 600;
+	text-decoration: underline;
+	text-underline-offset: 2px;
+	cursor: pointer;
+}
+
+body .tsp-ask .tsp-ask__remove:hover {
+	background: none;
+	color: var(--tsp-esp);
+	text-decoration-thickness: 2px;
+}

@@ -1,0 +1,191 @@
+/* TS Promotions: offer edit and list screens. */
+.tsp-field {
+	margin: 0 0 16px;
+}
+
+.tsp-field > label,
+.tsp-label {
+	display: block;
+	margin-bottom: 4px;
+	font-weight: 600;
+}
+
+.tsp-field .description {
+	display: block;
+	margin-top: 4px;
+}
+
+.tsp-inline {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.tsp-inline > label {
+	margin: 0;
+}
+
+.tsp-tiers {
+	width: 100%;
+	max-width: 760px;
+	margin-top: 6px;
+	border-collapse: collapse;
+}
+
+.tsp-tiers th,
+.tsp-tiers td {
+	padding: 3px 6px 3px 0;
+	text-align: left;
+}
+
+.tsp-tiers tbody th {
+	width: 1.5em;
+	color: #646970;
+	font-weight: 400;
+}
+
+.tsp-button {
+	margin-top: 8px;
+	padding: 12px 14px 2px;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+}
+
+.tsp-image__preview img {
+	display: block;
+	max-width: 240px;
+	height: auto;
+	margin: 6px 0 8px;
+	border-radius: 4px;
+}
+
+.tsp-dates-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 8px 32px;
+}
+
+.tsp-dates-grid input[type="date"] {
+	max-width: 220px;
+}
+
+.tsp-place {
+	margin: 0 0 14px;
+	padding: 10px 14px 4px;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+}
+
+.tsp-place legend {
+	padding: 0 6px;
+	font-size: 14px;
+}
+
+.tsp-place__body {
+	padding-top: 4px;
+}
+
+.tsp-where > label {
+	display: inline-block;
+	margin: 0 18px 8px 0;
+}
+
+.tsp-pages__filter {
+	width: 100%;
+	max-width: 360px;
+	margin-bottom: 6px;
+}
+
+.tsp-pages__list {
+	max-height: 220px;
+	margin: 0 0 12px;
+	padding: 6px 10px;
+	overflow: auto;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	background: #fff;
+	columns: 2 220px;
+}
+
+.tsp-pages__list li {
+	margin: 0 0 4px;
+	break-inside: avoid;
+}
+
+.tsp-pages__trips {
+	column-span: all;
+	padding-bottom: 4px;
+	border-bottom: 1px solid #f0f0f1;
+}
+
+[data-tsp-show][hidden],
+.tsp-pages__list li[hidden] {
+	display: none;
+}
+
+.tsp-state {
+	display: inline-block;
+	padding-left: 18px;
+	position: relative;
+}
+
+.tsp-state::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: .45em;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #a7aaad;
+}
+
+.tsp-state--running::before {
+	background: #00a32a;
+}
+
+.tsp-state--scheduled::before {
+	background: #dba617;
+}
+
+.tsp-state--no_end::before {
+	background: #d63638;
+}
+
+/* 1.2.0: trips (every trip, kinds, chosen trips). */
+.tsp-trips {
+	margin: 0 0 12px;
+	padding: 8px 12px;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	background: #fcfcfc;
+}
+
+.tsp-trips summary {
+	cursor: pointer;
+}
+
+.tsp-trips__count,
+.tsp-muted {
+	color: #646970;
+	font-weight: 400;
+}
+
+.tsp-kinds {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 4px 24px;
+	margin-bottom: 10px;
+}
+
+.tsp-kinds__group legend {
+	font-weight: 600;
+}
+
+.tsp-kinds__group ul {
+	margin: 4px 0 0;
+}
+
+.tsp-kinds__group li {
+	margin: 0 0 3px;
+}
