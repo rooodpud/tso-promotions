@@ -237,6 +237,10 @@ class TS_Promotion extends TS_Base_Widget {
 				echo '<div class="ts-w tsp-spot"><div class="tsp-item tsp-item--empty"><p class="tsp-item__text">' . nl2br( esc_html( $empty ) ) . '</p></div></div>';
 				return;
 			}
+			// 1.2.4: invisible marker so ts-promotion.css can hide a container that holds nothing else (Elementor caches the container's own markup, so only this widget can say it is now empty).
+			if ( ! \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
+				echo '<span class="tsp-none" hidden></span>';
+			}
 			$this->render_empty( __( 'TS Promotion: no offer is showing on this page today, so visitors see nothing here. Offers are written in wp-admin > Promotions.', 'travelstore-promotions' ) );
 			return;
 		}

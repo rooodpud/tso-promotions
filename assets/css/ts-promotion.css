@@ -195,3 +195,12 @@
 .tsp-trip-band {
 	padding: 28px 0 8px;
 }
+
+/*
+ * 1.2.4: when no offer is showing the widget leaves only .tsp-none behind. A container whose widgets are
+ * all TS Promotion (own background and padding) would stay as an empty strip, so hide it on the live page.
+ * The Elementor editor keeps showing it. Needs :has() (all current browsers).
+ */
+body:not(.elementor-editor-active) .e-con:has(.tsp-none):not(:has(.tsp-spot)):not(:has(.elementor-widget:not(.elementor-widget-ts-promotion))) {
+	display: none;
+}

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Travel Store Promotions
  * Description: Offers entered once in wp-admin (Promotions) and shown on chosen pages as a top bar, a band or card in the "TS Promotion" Elementor widget, a pop-up, a corner slide-in, a bottom bar or a ribbon on cards. Each offer appears on its first display day and disappears after its last one by itself (FUT-021).
- * Version:     1.2.3
+ * Version:     1.2.4
  * Author:      Pradeep Hingorani
  * GitHub Plugin URI: https://github.com/rooodpud/tso-promotions
  * Primary Branch: main
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'TSP_PATH', plugin_dir_path( __FILE__ ) );
 define( 'TSP_URL', plugin_dir_url( __FILE__ ) );
-define( 'TSP_VERSION', '1.2.3' );
+define( 'TSP_VERSION', '1.2.4' );
 
 require_once TSP_PATH . 'includes/class-promotion.php';
 require_once TSP_PATH . 'includes/class-render.php';
